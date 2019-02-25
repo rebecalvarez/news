@@ -1,0 +1,34 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "News Scraper",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rebecalvarez/news.git"
+  },
+  "keywords": [
+    "News"
+  ],
+  "author": "Rebeca Dodero",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rebecalvarez/news/issues"
+  },
+  "homepage": "https://github.com/rebecalvarez/news#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.15",
+    "morgan": "^1.9.1",
+    "npm": "^6.8.0",
+    "path": "^0.12.7"
+  }
+}
