@@ -20,7 +20,7 @@ var ArticleSchema = new Schema({
     },
     saved: {
         type: Boolean,
-        required: false
+        default: false
     },
     notes: [{
         type: Schema.Types.ObjectId,

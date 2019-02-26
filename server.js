@@ -48,8 +48,10 @@ app.set("view engine", "handlebars");
 
 
 // Database configuration with mongoose
-const db = mongoose.connection;
+var db = mongoose.connection;
 mongoose.connect("mongodb://localhost/mongoscraper",{ useNewUrlParser: true });
+// Connect to the Mongo DB
+
 
 // Show any mongoose errors
 db.on("error", function (error) {
@@ -87,22 +89,25 @@ app.get("/saved", function (req, res) {
 
 // A GET request to scrape the echojs website
 app.get("/scrape", function (req, res) {
+    console.log('*****we hit the /scrape *******');
     //First we grab the body of the html with axios
-    axios.get("https://www.techcrunch.com/").then(function (response) {
+    axios.get("https://techcrunch.com/").then(function (response) {
         // Load the html body from axios into cheerio
         var $ = cheerio.load(response.data);
+        // console.log('this is cheerio '+ response.data);
         // For each element with a "article" class we grab a h2 within that element
-        $("article").each(function (i, element) {
+        $(".post-block").each(function (i, element) {
             // Save an empty result object
             var result = {};
-            console.log('this is the result '+result);
+            
             //Add the title and summary of every link, and save them as properties
             //of the result object
-            result.title = $(element).children("h2").text();
-            console.log(result.title);
-            result.summary = $(element).children(".post-block__content").text();
-            result.link = $(element).children("h2").children("a").attr("href");
-
+            result.title = $(this).children(".post-block__header").children("h2").children("a").text().trim();
+            // console.log(result.title.trim());
+            //.post-block__content
+            result.summary = $(this).children(".post-block__content").text().trim();
+            result.link = $(this).children(".post-block__header").children("h2").children("a").attr("href");
+            // console.log( result);
             //Using our Articlemodel, create a new entry
             //This effectively passes the result oject to the entry 
             //(and the title and link)
@@ -113,6 +118,7 @@ app.get("/scrape", function (req, res) {
                 //Log any errors
 
                 if (err) {
+                  
                     console.log(err);
                 }
                 //or log the doc
@@ -147,7 +153,7 @@ app.get("/articles/:id", function(req,res){
     //Using the id passed in the id parameter, prepare a query that finds 
     //the matching one in our db ..
     Article.findOne({"_id": req.params.id})
-    //.. and populate all of the notes associated with it
+    //.. and populate all of the notes associated with it ????? "notes"
     .populate("note")
     // now, execute our query
     .exec(function(error,doc){
