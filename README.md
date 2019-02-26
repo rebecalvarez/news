@@ -1,15 +1,15 @@
 
 
-# Tech Cruch Article Scraper
+# Tech Crunch Article Scraper
 
 ## Overview
 
 An app that scrapes articles from the Tech Crunch website and lets users save articles and leave comments on the latest news.
 
-### Home Page
+## Home Page
 ![Tech News Article Scraper](/public/assets/images/demo.png)
 
-### Saved Articles Page
+## Saved Articles Page
 ![Tech News Saved Articles](/public/assets/images/saved.png)
 
 ## Website
