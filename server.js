@@ -107,6 +107,7 @@ app.get("/scrape", function (req, res) {
             //.post-block__content
             result.summary = $(this).children(".post-block__content").text().trim();
             result.link = $(this).children(".post-block__header").children("h2").children("a").attr("href");
+            result.imgUrl= $(this).children(".post-block__footer").children(".post-block__media").children("a").children("img").attr("src");
             // console.log( result);
             //Using our Articlemodel, create a new entry
             //This effectively passes the result oject to the entry 

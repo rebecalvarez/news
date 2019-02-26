@@ -18,6 +18,11 @@ var ArticleSchema = new Schema({
         type: String,
         required: true
     },
+    //this is for an Image
+    imgUrl: {
+        type: String,
+        required: true
+    },
     saved: {
         type: Boolean,
         default: false

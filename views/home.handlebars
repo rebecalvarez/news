@@ -1,8 +1,8 @@
 {{!-- !--Homepage--> --}}
 <div class="container">
-    <div class="col-md-12 jumbotron">
+    <div class="col-md-12 jumbotron banner">
         <div class="text-center">
-            <h1>Tech News Scraper</h1>
+            {{!-- <h1>Tech News Scraper</h1> --}}
         </div>
 
     </div>
@@ -11,13 +11,14 @@
             {{#each article}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>{{this.title}}</h4>
+                    <h4 class="title">{{this.title}}</h4> <button type="button" class="btn btn-success save btn-styling" data-id={{this._id}}>Save Article</button>
                 </div>
                 <div class="panel-body">
+                    <img class="image"src={{this.imgUrl}}>
                     <p> {{this.summary}}</p>
                     <a href={{this.link}} target="_blank">{{this.link}}</a>
                     <br><br>
-                    <button type="button" class="btn btn-success save" data-id={{this._id}}>Save Article</button>
+                    
                 </div>
             </div>
             {{/each}}

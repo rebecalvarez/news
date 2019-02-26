@@ -2,9 +2,9 @@
 
 <div class="container">
 
-    <div class="col-md-12 jumbotron">
+    <div class="col-md-12 jumbotron saved-banner">
         <div class="text-center">
-            <h1> Saved Articles</h1>
+            <h1 class="saved-title"> Saved Articles</h1>
         </div>
     </div>
     <div class="col-md-12">
@@ -12,9 +12,10 @@
             {{#each article}}
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>{{this.title}}</h4>
+                        <h4 class="title-saved">{{this.title}}</h4>
                     </div>
                     <div class="panel-body">
+                        <img class="image"src={{this.imgUrl}}>
                         <p> {{this.summary}}</p>
                         <a href={{this.link}} target="_blank">{{this.link}}</a>
                         <br><br>
