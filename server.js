@@ -14,7 +14,7 @@ const express = require("express"),
 
 // Requiring Note and Article models
 const Note = require("./models/Note.js");
-const Article = requite("./models/Article.js");
+const Article = require("./models/Article.js");
 
 // Set mongoose to leverage build in Javascript ES6 Promises
 
@@ -47,9 +47,9 @@ app.engine("handlebars", exphbs({
 app.set("view engine", "handlebars");
 
 
-// Database configuration wit mongoose
+// Database configuration with mongoose
 const db = mongoose.connection;
-mongoose.connect("mongodb://localhost/mongoscraper");
+mongoose.connect("mongodb://localhost/mongoscraper",{ useNewUrlParser: true });
 
 // Show any mongoose errors
 db.on("error", function (error) {
@@ -88,24 +88,25 @@ app.get("/saved", function (req, res) {
 // A GET request to scrape the echojs website
 app.get("/scrape", function (req, res) {
     //First we grab the body of the html with axios
-    axios.get("https://techcrunch.com").then(function (response) {
+    axios.get("https://www.techcrunch.com/").then(function (response) {
         // Load the html body from axios into cheerio
-        const $ = cheerio.load(response.data);
+        var $ = cheerio.load(response.data);
         // For each element with a "article" class we grab a h2 within that element
         $("article").each(function (i, element) {
             // Save an empty result object
-            let result = {};
-
+            var result = {};
+            console.log('this is the result '+result);
             //Add the title and summary of every link, and save them as properties
             //of the result object
-            result.title = $(this).children("h2").text();
-            result.summary = $(this).children(".post-block__content").text();
-            result.link = $(this).children("h2").children("a").attr("href");
+            result.title = $(element).children("h2").text();
+            console.log(result.title);
+            result.summary = $(element).children(".post-block__content").text();
+            result.link = $(element).children("h2").children("a").attr("href");
 
             //Using our Articlemodel, create a new entry
             //This effectively passes the result oject to the entry 
             //(and the title and link)
-            let entry = new Article(result);
+            var entry = new Article(result);
 
             // Now, save that entry to the db
             entry.save(function (err, doc) {
@@ -116,17 +117,17 @@ app.get("/scrape", function (req, res) {
                 }
                 //or log the doc
                 else {
-                    console.log(doc);
+                    console.log("This is doc: "+ doc);
                 }
             });
 
         });
-        res.send("Scrape Complete")
+        res.send("Scrape Complete");
     });
     // Tell the browser that we finished scraping the text 
 });
 
-// This iwll get the articles we scraped from the mongoDB
+// This will get the articles we scraped from the mongoDB
 
 app.get("/articles", function (req, res) {
     //Grab every doc in the Articles array
