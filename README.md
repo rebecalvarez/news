@@ -19,7 +19,7 @@ Saved articles can be viewed at the "Saved Articles" page.
 Comments can be added on saved articles by clicking the "Add a Note" button.
 Saved articles can be deleted by clicking the "Delete" button.
 
-Check out the App
+#### <a href:"https://technews-scrape.herokuapp.com/" target:"_blank">Check out the App </a> 
 
 ## Technologies Used
 <ul>

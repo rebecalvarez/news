@@ -46,14 +46,14 @@ app.engine("handlebars", exphbs({
 
 app.set("view engine", "handlebars");
 
-
+// Connect to the Mongo DB
 // Database configuration with mongoose
 var db = mongoose.connection;
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoscraper";
 mongoose.connect(MONGODB_URI);
 
 // mongoose.connect("mongodb://localhost/mongoscraper",{ useNewUrlParser: true });
-// Connect to the Mongo DB
+
 
 
 // Show any mongoose errors
@@ -92,7 +92,7 @@ app.get("/saved", function (req, res) {
 
 // A GET request to scrape the echojs website
 app.get("/scrape", function (req, res) {
-    console.log('*****we hit the /scrape *******');
+    
     //First we grab the body of the html with axios
     axios.get("https://techcrunch.com/").then(function (response) {
         // Load the html body from axios into cheerio
