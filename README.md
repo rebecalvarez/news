@@ -1,8 +1,8 @@
 
 
-#Tech Cruch Article Scraper
+# Tech Cruch Article Scraper
 
-##Overview
+## Overview
 
 An app that scrapes articles from the Tech Crunch website and lets users save articles and leave comments on the latest news.
 
@@ -10,9 +10,9 @@ An app that scrapes articles from the Tech Crunch website and lets users save ar
 
 ![Tech News Saved Articles](/public/assets/images/saved.png)
 
-##Website
+## Website
 
-###How It Works
+### How It Works
 Scrape articles by clicking the "Scrape Articles" button.
 Once articles are loaded, read full article by clicking the link in each article's panel and save articles by clicking the "Save Article" button.
 Saved articles can be viewed at the "Saved Articles" page.
@@ -21,7 +21,7 @@ Saved articles can be deleted by clicking the "Delete" button.
 
 Check out the App
 
-##Technologies Used
+## Technologies Used
 <ul>
 <li>Node.js</li>
 <li>Express.js</li>
