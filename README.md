@@ -6,8 +6,10 @@
 
 An app that scrapes articles from the Tech Crunch website and lets users save articles and leave comments on the latest news.
 
+### Home Page
 ![Tech News Article Scraper](/public/assets/images/demo.png)
 
+### Saved Articles Page
 ![Tech News Saved Articles](/public/assets/images/saved.png)
 
 ## Website
@@ -19,7 +21,7 @@ Saved articles can be viewed at the "Saved Articles" page.
 Comments can be added on saved articles by clicking the "Add a Note" button.
 Saved articles can be deleted by clicking the "Delete" button.
 
-#### <a href:"https://technews-scrape.herokuapp.com/" target:"_blank">Check out the App </a> 
+#### Check out the App:  https://technews-scrape.herokuapp.com/
 
 ## Technologies Used
 <ul>
