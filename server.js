@@ -49,7 +49,10 @@ app.set("view engine", "handlebars");
 
 // Database configuration with mongoose
 var db = mongoose.connection;
-mongoose.connect("mongodb://localhost/mongoscraper",{ useNewUrlParser: true });
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoscraper";
+mongoose.connect(MONGODB_URI);
+
+// mongoose.connect("mongodb://localhost/mongoscraper",{ useNewUrlParser: true });
 // Connect to the Mongo DB
 
 
